@@ -5,14 +5,14 @@ import { CoreComponent } from '../core/core.component';
   providedIn: 'root',
 })
 export class RegistryService {
-  private components: Record<string, Type<CoreComponent>> = {};
+  private components = new Map<string, CoreComponent>();
 
   register(sparte: string, component: CoreComponent): void {
     // have to store component type, can only store instance here
-    this.components[sparte] = component;
+    this.components.set(sparte, component);
   }
 
-  getFromRegistry(sparte: string): Type<CoreComponent> | null {
-    return this.components[sparte] ?? null;
+  getFromRegistry(sparte: string): CoreComponent | null {
+    return this.components.get(sparte) ?? null;
   }
 }
