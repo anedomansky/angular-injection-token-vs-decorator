@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Injector, inject } from '@angular/core';
 import { DefaultSparteComponent } from 'core';
 
+// @SparteComponent('unfall')
 @Component({
   selector: 'lib-unfall-sparte',
   standalone: true,

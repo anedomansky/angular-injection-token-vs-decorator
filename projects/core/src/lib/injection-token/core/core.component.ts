@@ -1,6 +1,7 @@
 import { NgComponentOutlet } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, Type, inject } from '@angular/core';
 import { DefaultSparteComponent } from '../default-sparte/default-sparte.component';
+import { SPARTE_COMPONENT_TOKEN } from '../injection-tokens/sparte-component.injection-token';
 
 @Component({
   selector: 'lib-core',
@@ -10,5 +11,6 @@ import { DefaultSparteComponent } from '../default-sparte/default-sparte.compone
   styleUrl: './core.component.css',
 })
 export class CoreComponent {
-  protected sparteComponent = DefaultSparteComponent;
+  protected sparteComponent = inject(SPARTE_COMPONENT_TOKEN)
+    .constructor as Type<DefaultSparteComponent>;
 }
